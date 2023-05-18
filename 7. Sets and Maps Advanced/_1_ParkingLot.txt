@@ -1,0 +1,34 @@
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class _1_ParkingLot {
+
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        
+        Set<String> carNumbers = new LinkedHashSet<>();
+
+        while (!input.equals("END")) {
+            String[] tokes = input.split(", ");
+            String directions = tokes[0];
+            String carRegistration = tokes[1];
+            
+            if (directions.equals("IN")) {
+                carNumbers.add(carRegistration);
+            }else {
+                carNumbers.remove(carRegistration);
+            }
+            input = scanner.nextLine();
+        }
+
+        if (carNumbers.isEmpty()) {
+            System.out.println("Parking Lot is Empty");
+        } else {
+            System.out.println(String.join(System.lineSeparator(), carNumbers));
+        }
+    }
+    
+}

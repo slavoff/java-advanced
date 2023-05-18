@@ -1,0 +1,34 @@
+import java.util.ArrayDeque;
+import java.util.Scanner;
+
+public class _1_BrowserHistory {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        String navigation = scanner.nextLine();
+        String currentURL = "";
+
+        ArrayDeque<String> history = new ArrayDeque<>();
+
+        while (!navigation.equals("Home")) {
+            if (navigation.equals("back")) {
+                if (!history.isEmpty()) {
+                    currentURL = history.pop();
+                } else {
+                    System.out.println("no previous URLs");
+                    navigation = scanner.nextLine();
+                    continue;
+                }
+            } else {
+                if (!currentURL.isEmpty()){
+                    history.push(currentURL);
+                }
+                currentURL = navigation;
+            }
+            System.out.println(currentURL);
+            navigation = scanner.nextLine();
+        }
+    }
+}

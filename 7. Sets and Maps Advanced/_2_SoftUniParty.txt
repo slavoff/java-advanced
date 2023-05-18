@@ -1,0 +1,30 @@
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class _2_SoftUniParty {
+
+    public static void main(String[] args) {
+
+        Set<String> guests = new TreeSet<>();
+        
+        Scanner scanner = new Scanner(System.in);
+        String reservationNumber = scanner.nextLine();
+
+        while (!reservationNumber.equals("PARTY")) {
+            guests.add(reservationNumber);
+            reservationNumber = scanner.nextLine();
+        }
+
+        String guestReservations = scanner.nextLine();
+
+        while (!guestReservations.equals("END")) {
+            guests.remove(guestReservations);
+            guestReservations = scanner.nextLine();
+        }
+
+        System.out.println(guests.size());
+        System.out.println(String.join(System.lineSeparator(), guests));
+    }
+    
+}
